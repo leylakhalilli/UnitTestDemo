@@ -21,7 +21,6 @@ import java.util.List;
 public class DoctorController {
 
     private final DoctorService doctorService;
-
     private final ObjectMapper objectMapper;
 
     @PostMapping
@@ -35,17 +34,17 @@ public class DoctorController {
         return ResponseEntity.ok(doctorService.getAll());
     }
 
-    @GetMapping("/")
-    public ResponseEntity<Resource> getImage() throws IOException {
-        Path imagePath = Paths.get("C:\\Users\\User\\Pictures\\Screenshots\\Screenshot (117).png");
-
-        byte[] imageBytes = Files.readAllBytes(imagePath);
-        String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-        byte[] decodedImage = Base64.getDecoder().decode(base64Image);
-        ByteArrayResource resource = new ByteArrayResource(decodedImage);
-
-        return ResponseEntity.ok()
-                .contentLength(decodedImage.length)
-                .contentType(MediaType.IMAGE_JPEG)
-                .body(objectMapper.convertValue(resource,Resource.class));}
+//    @GetMapping("/")
+//    public ResponseEntity<Resource> getImage() throws IOException {
+//        Path imagePath = Paths.get("C:\\Users\\User\\Pictures\\Screenshots\\Screenshot (117).png");
+//
+//        byte[] imageBytes = Files.readAllBytes(imagePath);
+//        String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+//        byte[] decodedImage = Base64.getDecoder().decode(base64Image);
+//        ByteArrayResource resource = new ByteArrayResource(decodedImage);
+//
+//        return ResponseEntity.ok()
+//                .contentLength(decodedImage.length)
+//                .contentType(MediaType.IMAGE_JPEG)
+//                .body(objectMapper.convertValue(resource,Resource.class));}
 }
